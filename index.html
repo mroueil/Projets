@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet CNFPT</title>
+
+    <!-- boxicons link -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- remixicons link -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        header{
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 33px 9%;
+            background: transparent;
+        }
+
+        .logo{
+            font-size: 30px;
+            font-weight: 700;
+            color: white;
+            position: relative; /* Nécessaire pour positionner le menu déroulant */
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none; /* Caché par défaut */
+            position: absolute;
+            top: 100%; /* Positionne juste en dessous du logo */
+            left: 0;
+            background-color: rgba(3, 108, 156, 0.8); /* Couleur #036c9c avec 50% de transparence */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 200px; /* Ajustez la largeur si nécessaire */
+            z-index: 1000; /* Assure que le menu est au-dessus des autres éléments */
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 10px;
+        }
+
+        .dropdown-menu ul li a {
+            color: white;
+            display: block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-menu ul li a:hover {
+            background-color: #013750; /* Couleur d'arrière-plan lors du survol */
+        }
+
+        .navlist{
+            display: flex;
+        }
+
+        .navlist a{
+            color: white;
+            margin-left: 60px;
+            font-size: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all .55s ease;
+        }
+
+        .navlist a:hover{
+            border-bottom: 2px solid white;
+        }
+
+        /* Style pour masquer le sous-menu par défaut */
+        .navlist .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .navlist .dropdown-content li {
+            list-style-type: none;
+            padding: 8px 16px;
+        }
+
+        .navlist .dropdown-content li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Afficher le sous-menu lorsqu'il est actif */
+        .navlist .dropdown-content.show {
+            display: block;
+        }
+
+        /**********************************************/
+
+        #menu-icon{
+            color: white;
+            font-size: 35px;
+            z-index: 10001;
+            cursor: pointer;
+            display: none;
+        }
+
+        ::selection {
+			background-color: #f7f7f7; /* Changer la couleur de surlignage */
+			color: #2a2a2d; /* Changer la couleur du texte surligné */
+		}
+
+        .hero{
+            height: 100%;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(245.59deg, #189CD8 0%, #036c9c 28.53%, #013750 75.52%);
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            align-items: center;
+            gap: 2rem;
+        }
+
+        section{
+            padding: 0 19%;
+        }
+
+        .hero-text h5{
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-text h1{
+            font-family: 'Permanent Marker', cursive;
+            font-size: 90px;
+            line-height: 1;
+            color: white;
+            margin: 0 0 45px;
+        }
+
+        .hero-text h4{
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p{
+            font-size: 15px;
+            line-height: 1.9;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-img img{
+            width: 700px;
+            height: auto;
+        }
+
+        .hero-text a{
+            display: inline-block;
+            color: white;
+            background: #036c9c;
+            border: 1px solid transparent;
+            padding: 12px 30px;
+            line-height: 1.4;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 30px;
+            text-transform: uppercase;
+            transition: all .55s ease;
+        }
+
+        .hero-text a:hover{
+            background: transparent;
+            border: 1px solid white;
+            transform: translateX(8px);
+        }
+
+        .hero-text a.ctaa{
+            background: transparent;
+            border: 1px solid white;
+            margin-left: 20px;
+        }
+
+        .hero-text a.ctaa i{
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .scroll-down{
+            position: absolute;
+            bottom: 6%;
+            right: 9%;
+        }
+
+        .scroll-down i{
+            display: block;
+            padding: 12px;
+            font-size: 25px;
+            color: white;
+            background: transparent;
+            border-radius: 30px;
+            transition: all .50s ease;
+        }
+
+        .scroll-down i:hover{
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 1535px){
+            header{
+                padding: 15px 3%;
+                transition: .2s;
+
+            }
+            .scroll-down{
+                right: 3%;
+                transition: .2s;
+            }
+        }
+
+        @media (max-width: 1460px){
+            section{
+                padding: 0 12%;
+                transition: .2s;
+            }
+        }
+
+        @media (max-width: 1340px){
+            .hero-img img{
+                width: 100%;
+                height: auto;
+            }
+            .hero-text h1{
+                font-size: 75px;
+                margin: 0 0 30px;
+            }
+            .hero-text h5{
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 1195px){
+            section{
+                padding: 0 3%;
+                transition: .2s;
+            }
+            .hero-text{
+                padding-top: 115px;
+            }
+            .hero-img{
+                text-align: center;
+            }
+            .hero-img img{
+                width: 560px;
+                height: auto;
+            }
+            .hero{
+                height: 100%;
+                gap: 1rem;
+                grid-template-columns: 1fr;
+            }
+            .scroll-down{
+                display: none;
+            }
+        }
+
+        @media (max-width: 990px){
+            #menu-icon{
+                display: block;
+            }
+            .navlist{
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 300px;
+                height: 40vh;
+                background: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                padding: 50px 20px;
+                transition: all .55s ease;
+            }
+            .navlist a{
+                display: block;
+                margin-left: 0;
+                margin: 7px 0;
+            }
+            .navlist.open{
+                right: 0;
+            }
+        }
+
+        @media (max-width: 680px){
+            .hero-img img{
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #013750;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .modal-content h1 {
+            font-family: 'Permanent Marker', cursive;
+            
+            font-size: 24px;
+            color: #ffffff; /* Couleur du texte, vous pouvez changer selon votre préférence */
+            margin-bottom: 20px; /* Espace entre le titre et la vidéo */
+        }
+
+        .close {
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #aaa;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+
+        #app canvas {
+            display: block;
+            position: fixed;
+            z-index: -1;
+            top: 0;
+        }
+
+        .scroll-text {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(3, 108, 156, 0.8); /* Couleur #036c9c avec 50% de transparence */
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-text.show {
+            display: block;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 700px; /* Ajustez la largeur selon vos besoins */
+            height: auto;
+        }
+
+        .content{
+            width:100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+
+        
+        .base-image, .overlay-image, .neon-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            transition: opacity 0.6s;
+            transform: translateY(-250px); /* Ajustez la valeur pour remonter l'image */
+            
+        }
+
+        .overlay-image{
+            opacity: 0; /* Cache l'image opaque par défaut */
+            visibility: hidden; /* Assure que l'image opaque est cachée au départ */
+        }
+
+        .neon-image {
+            opacity: 0; /* Cache l'image opaque par défaut */
+            visibility: hidden; /* Assure que l'image opaque est cachée au départ */
+            transition: opacity 0.5s ease, visibility 0.5s ease; /* Pour des transitions en douceur */
+        }
+
+        .wrapper:hover .overlay-image {
+            opacity: 1; /* Affiche l'image opaque au survol */
+            visibility: visible; /* Assure que l'image opaque est visible au survol */
+        }
+
+        .wrapper:hover .content {
+            opacity: 1;
+        }
+
+        .content h1{
+            font-size: 45;
+            color: #ffe100;
+            margin-bottom: 15px;
+        }
+
+        .content p{
+            font-size: 19px;
+            color: #fff;
+        }
+
+    </style>
+
+    <script type="module">
+
+        /****************** Neon Cursor *****************/
+
+        import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
+
+        document.addEventListener("DOMContentLoaded", function() {
+            neonCursor({
+                el: document.getElementById('app'),
+                shaderPoints: 16,
+                curvePoints: 80,
+                curveLerp: 0.5,
+                radius1: 5,
+                radius2: 30,
+                velocityTreshold: 10,
+                sleepRadiusX: 100,
+                sleepRadiusY: 100,
+                sleepTimeCoefX: 0.0025,
+                sleepTimeCoefY: 0.0025
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroSection = document.querySelector('.hero');
+            const neonImage = document.querySelector('.neon-image');
+            const scrollText = document.getElementById('scroll-text');
+            const sequence = ['ArrowDown', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight'];
+            let inputSequence = [];
+
+            // Fonction pour vérifier la séquence de touches
+            function checkSequence() {
+                if (inputSequence.toString() === sequence.toString()) {
+                    // Basculer le background de .hero
+                    if (heroSection.style.background === 'none') {
+                        heroSection.style.background = 'linear-gradient(245.59deg, #189CD8 0%, #036c9c 28.53%, #013750 75.52%)';
+                    } else {
+                        heroSection.style.background = 'none';
+                    }
+                    
+                    // Basculer opacity et visibility de .neon-image
+                    if (neonImage.style.opacity === '0') {
+                        neonImage.style.opacity = '0';
+                        neonImage.style.visibility = 'hidden';
+                    } else {
+                        neonImage.style.opacity = '1';
+                        neonImage.style.visibility = 'visible';
+                    }
+
+                    scrollText.innerHTML = `<b>Félicitations, Programme !</b><br>Vous avez réussi à déjouer les systèmes et accéder au mode caché. Vous êtes désormais dans la zone réservée aux utilisateurs avancés. Préparez-vous à explorer les circuits inexplorés de la matrice.`;
+                    
+                    // Réinitialiser la séquence après succès
+                    inputSequence = [];
+
+                    
+                }
+            }
+
+            document.addEventListener('keydown', function(event) {
+                // Ajouter la touche actuelle à la séquence
+                inputSequence.push(event.key);
+
+                // Vérifier la séquence
+                if (inputSequence.length > sequence.length) {
+                    inputSequence.shift(); // Maintenir la longueur de la séquence
+                }
+                
+                checkSequence();
+            });
+
+            
+
+
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollDownButton = document.getElementById('scroll-down');
+            const scrollText = document.getElementById('scroll-text');
+
+            // Afficher le texte lorsque le bouton "scroll-down" est cliqué
+            scrollDownButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Empêche l'action par défaut du clic
+                scrollText.classList.toggle('show'); // Bascule la visibilité du texte
+            });
+
+            // Masquer le texte si l'utilisateur clique en dehors du message
+            document.addEventListener('click', function(event) {
+                // Vérifie si le clic est à l'intérieur du texte ou du bouton
+                if (!scrollText.contains(event.target) && !scrollDownButton.contains(event.target)) {
+                    scrollText.classList.remove('show'); // Masquer le texte
+                }
+            });
+        });
+
+    </script>
+
+    <!-- scrollreveal effect -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <script>
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            let menu = document.querySelector('#menu-icon');
+            let navlist = document.querySelector('.navlist');
+            let modal = document.getElementById('modal');
+            let btn = document.querySelector('.ctaa');
+            let span = document.querySelector('.close');
+            let iframe = document.querySelector('iframe');
+            const videoSrc = iframe.src; // Conserver l'URL de la vidéo pour la réinitialiser plus tard
+
+            menu.onclick = () => {
+                menu.classList.toggle('bx-x');
+                navlist.classList.toggle('open');
+            };
+
+            btn.onclick = function(event) {
+                event.preventDefault();
+                modal.style.display = 'block';
+                iframe.src = videoSrc; // Réinitialiser la vidéo pour qu'elle recommence
+            };
+
+            span.onclick = function() {
+                modal.style.display = 'none';
+                stopVideo();
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    stopVideo();
+                }
+            };
+
+            function stopVideo() {
+                iframe.src = ''; // Vider l'URL pour arrêter la vidéo
+            }
+
+            /* gérer le clic sur "Outils" et afficher/masquer le sous-menu. */
+
+            document.getElementById("tools-menu").addEventListener("click", function(event) {
+                event.preventDefault();
+                var submenu = document.getElementById("tools-submenu");
+                submenu.classList.toggle("show");
+            });
+
+            /* Fermer le sous-menu "outils" si on clique ailleurs sur la page */
+            window.onclick = function(event) {
+                if (!event.target.matches('#tools-menu')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+            const sr = ScrollReveal({
+                distance: '65px',
+                duration: 2600,
+                delay: 450,
+                reset: true
+            });
+
+            sr.reveal('.hero-text', { delay: 200, origin: 'top' });
+            sr.reveal('.hero-img', { delay: 450, origin: 'top' });
+            sr.reveal('.scroll-down', { delay: 500, origin: 'right' });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let logo = document.querySelector('#logo');
+            let dropdownMenu = document.querySelector('#dropdown-menu');
+
+            logo.addEventListener('click', function(event) {
+                event.preventDefault();
+                // Toggle the dropdown menu
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Optionnel : Fermer le menu si l'utilisateur clique en dehors
+            window.addEventListener('click', function(event) {
+                if (!logo.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+
+        
+    </script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <a href="#" class="logo" id="logo">PROJET</a>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <ul>
+                    <li><a href="index.html">CNFPT</a></li>
+                    <li><a href="#">Projet 2</a></li>
+                    <li><a href="#">Projet 3</a></li>
+                    <li><a href="#">Projet 4</a></li>
+                    <!-- Ajoutez plus de projets ici -->
+                </ul>
+            </div>
+
+            <ul class="navlist">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Consignes.html">Procédures</a></li>
+                <li><a href="Template.html">Template</a></li>
+                <li><a href="Groupes.html">Groupes</a></li>
+                <li><a href="Generateur.html">Générateur</a></li>
+                <li class="dropdown">
+                    <a href="#" id="tools-menu">Outils</a>
+                    <ul class="dropdown-content" id="tools-submenu">
+                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT%2Fvang%40Inf%5FPrd%5FSL200149%5FRebond%5FRDP%5FC%5FSCC%5FCDS%5Fotp%2Erdp&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT" target="_blank">RDP Machine de rebond</a></li>
+                        <li><a href="https://moncompte.cnfpt.fr/" target="_blank">Mon Compte CNFPT</a></li>
+                        <li><a href="https://formadist.cnfpt.fr/gestion" target="_blank">FORMADIST</a></li>
+                        <li><a href="https://auth.cnfpt.fr/carbon/admin/index.jsp" target="_blank">WSO2</a></li>
+                        <li><a href="https://e-communautes.cnfpt.fr/admin/people" target="_blank">E-Communautés</a></li>
+                        <li><a href="https://www.cnfpt.fr/rechercher-formation" target="_blank">Rechercher une formation</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </header>
+        
+        <section class="hero" id="cnfpt">
+            <div class="hero-text">
+                <h5></h5>
+                <h4>Recyclea</h4>
+                <h1>TEAM CNFPT</h1>
+                <p>Bienvenue sur la page de l'équipe CNFPT ! <br>Ici, vous trouverez tous les outils indispensables pour vous faciliter la vie et optimiser votre travail.</p>
+                <a href="#" class="ctaa"><i class="ri-play-fill"></i>Voir présentation</a>
+            </div>
+
+            <div class="wrapper">
+                <div class="hero-img">
+                    <img src="main.png" class="base-image">
+                    <img src="main_dark.png" class="overlay-image">
+                    <img src="main_neon.png" class="neon-image">
+                    <div class="content">
+                        <br><br><br><br><br><br>
+                        <h1>Phrase d’accueil :</h1>
+                         <p><b>Centre de support informatique du CNFPT bonjour,</b></p>
+                        <P><b>que puis-je faire pour vous ?</b></P>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Structure -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>TEAM CNFPT</h1>
+                    <iframe width="560" height="315" src="../Presentation.mp4" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </section> 
+
+        <div class="scroll-down" id="scroll-down">
+            <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
+        </div>
+
+        <!-- Texte caché par défaut -->
+        <div id="scroll-text" class="scroll-text">
+            <b>Défi des Flèches !</b><br>Pour révéler le mode secret, vous devez entrer la combinaison correcte de 8 touches de direction sur votre clavier. Vous avez le pouvoir de découvrir le chemin, mais attention : seul le bon enchaînement débloquera le mystère. Soyez vigilant et stratégique.
+        </div>
+       
+    </div>
+    
+</body>
+</html>
