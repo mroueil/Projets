@@ -571,74 +571,68 @@
     <script>
 
         
-        document.addEventListener('DOMContentLoaded', function() {
-            let menu = document.querySelector('#menu-icon');
-            let navlist = document.querySelector('.navlist');
-            let modal = document.getElementById('modal');
-            let btn = document.querySelector('.ctaa');
-            let span = document.querySelector('.close');
-            let iframe = document.querySelector('iframe');
-            const videoSrc = iframe.src; // Conserver l'URL de la vidéo pour la réinitialiser plus tard
+    document.addEventListener('DOMContentLoaded', function() {
+        let menu = document.querySelector('#menu-icon');
+        let navlist = document.querySelector('.navlist');
+        let modal = document.getElementById('modal');
+        let btn = document.querySelector('.ctaa');
+        let span = document.querySelector('.close');
+        let video = document.querySelector('video');
 
-            menu.onclick = () => {
-                menu.classList.toggle('bx-x');
-                navlist.classList.toggle('open');
-            };
+        menu.onclick = () => {
+            menu.classList.toggle('bx-x');
+            navlist.classList.toggle('open');
+        };
 
-            btn.onclick = function(event) {
-                event.preventDefault();
-                modal.style.display = 'block';
-                iframe.src = videoSrc; // Réinitialiser la vidéo pour qu'elle recommence
-            };
+        btn.onclick = function(event) {
+            event.preventDefault();
+            modal.style.display = 'block';
+            video.play(); // Démarre la vidéo automatiquement quand le modal s'ouvre
+        };
 
-            span.onclick = function() {
+        span.onclick = function() {
+            modal.style.display = 'none';
+            video.pause(); // Met la vidéo en pause quand le modal se ferme
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = 'none';
-                stopVideo();
-            };
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                    stopVideo();
-                }
-            };
-
-            function stopVideo() {
-                iframe.src = ''; // Vider l'URL pour arrêter la vidéo
+                video.pause(); // Met la vidéo en pause quand le modal se ferme
             }
+        };
 
-            /* gérer le clic sur "Outils" et afficher/masquer le sous-menu. */
+        /* Gérer le clic sur "Outils" et afficher/masquer le sous-menu. */
+        document.getElementById("tools-menu").addEventListener("click", function(event) {
+            event.preventDefault();
+            var submenu = document.getElementById("tools-submenu");
+            submenu.classList.toggle("show");
+        });
 
-            document.getElementById("tools-menu").addEventListener("click", function(event) {
-                event.preventDefault();
-                var submenu = document.getElementById("tools-submenu");
-                submenu.classList.toggle("show");
-            });
-
-            /* Fermer le sous-menu "outils" si on clique ailleurs sur la page */
-            window.onclick = function(event) {
-                if (!event.target.matches('#tools-menu')) {
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    for (var i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
+        /* Fermer le sous-menu "outils" si on clique ailleurs sur la page */
+        window.onclick = function(event) {
+            if (!event.target.matches('#tools-menu')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
                     }
                 }
             }
+        };
 
-            const sr = ScrollReveal({
-                distance: '65px',
-                duration: 2600,
-                delay: 450,
-                reset: true
-            });
-
-            sr.reveal('.hero-text', { delay: 200, origin: 'top' });
-            sr.reveal('.hero-img', { delay: 450, origin: 'top' });
-            sr.reveal('.scroll-down', { delay: 500, origin: 'right' });
+        const sr = ScrollReveal({
+            distance: '65px',
+            duration: 2600,
+            delay: 450,
+            reset: true
         });
+
+        sr.reveal('.hero-text', { delay: 200, origin: 'top' });
+        sr.reveal('.hero-img', { delay: 450, origin: 'top' });
+        sr.reveal('.scroll-down', { delay: 500, origin: 'right' });
+    });
 
         document.addEventListener('DOMContentLoaded', function() {
             let logo = document.querySelector('#logo');
@@ -725,7 +719,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h1>TEAM CNFPT</h1>
-                    <iframe width="560" height="315" src="Presentation.mp4" frameborder="0" allowfullscreen></iframe>
+                    <video width="560" height="315" src="Presentation.mp4" muted controls></video>
                 </div>
             </div>
 
