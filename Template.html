@@ -51,6 +51,8 @@
             justify-content: space-between;
             padding: 33px 9%;
             background: transparent;
+			position: relative; /* ou absolute, fixed, sticky */
+			z-index: 10;
         }
 
         .logo{
@@ -396,6 +398,8 @@
 			width: 90%; /* Largeur du formulaire, ajustez selon vos besoins */
 			max-width: 1550px; /* Largeur maximale du formulaire pour éviter qu'il ne devienne trop large */
 			background-color: transparent; /* Changer la couleur de fond du formulaire */
+			position: relative; /* ou absolute, fixed, sticky */
+			z-index: 20;
 			
 		}
 		
@@ -907,7 +911,6 @@
 				<form>
 					<fieldset>
 
-					<br><br><br><br><br>
 
 					<button id="bouton" onclick="copyText()">Copier - Template Vérification</button>
 						
