@@ -80,58 +80,112 @@
             background-color: #013750; /* Couleur d'arrière-plan lors du survol */
         }
 
-        .navlist{
-            display: flex;
+        /* Style global pour gérer le box-sizing et le positionnement des pseudo-éléments */
+        *, ::after, ::before {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Assure que les marges et le padding sont inclus dans les dimensions */
         }
 
-        .navlist a{
+        /* Style pour la navigation */
+        .navlist {
+            display: flex;
+            position: relative;
+        }
+
+        /* Style pour les liens dans la navigation */
+        .navlist a {
             color: white;
             margin-left: 60px;
             font-size: 15px;
             font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: all .55s ease;
+            position: relative;
+            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
+            text-decoration: none;
         }
 
-        .navlist a:hover{
-            border-bottom: 2px solid white;
-        }
+        /* Effet de surlignage pour les écrans de largeur supérieure à 45em (environ 720px) */
+        
+            .navlist a::after { 
+                position: absolute;
+                bottom: 0;
+                content: '';
+                display: block;
+                background-color: currentColor; /* Utilise la couleur actuelle du texte */
+                transition: width 0.3s ease; /* Transition fluide de la largeur */
+                width: 0; /* Par défaut, la largeur du surlignage est 0, donc invisible */
+                border-radius: 2px; /* Arrondit les bords du surlignage */
+                height: 2px; /* Hauteur de la ligne de surlignage */
+                left: 0; /* Aligné à gauche */
+            }
+
+            .navlist a:hover::after { /* Effet de survol */
+                width: 100%; /* Le surlignage s'étend sur toute la largeur du lien */
+            }
+        
 
         /* Style pour masquer le sous-menu par défaut */
         .navlist .dropdown-content {
             display: none;
             position: absolute;
             background-color: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
-            min-width: 160px;
+            min-width: 300px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
+        /* Style pour les éléments du sous-menu */
         .navlist .dropdown-content li {
             list-style-type: none;
             padding: 8px 16px;
         }
 
+        /* Style pour les liens dans le sous-menu */
         .navlist .dropdown-content li a {
             color: white;
             text-decoration: none;
             display: block;
+            position: relative;
+            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
+            font-size: 14px;
         }
+
+        /* Effet de surlignage pour les liens du sous-menu */
+        
+            .navlist .dropdown-content li a::after {
+                position: absolute;
+                bottom: 0;
+                content: '';
+                display: block;
+                background-color: currentColor;
+                transition: width 0.3s ease;
+                width: 0; /* Par défaut, la largeur du surlignage est 0 */
+                border-radius: 2px;
+                height: 2px;
+                left: 0;
+            }
+
+            .navlist .dropdown-content li a:hover::after {
+                width: 100%; /* Le surlignage s'étend sur toute la largeur */
+            }
+        
 
         /* Afficher le sous-menu lorsqu'il est actif */
         .navlist .dropdown-content.show {
             display: block;
         }
 
-        /**********************************************/
-
-        #menu-icon{
+        /* Style pour l'icône de menu (en mode mobile par exemple) */
+        #menu-icon {
             color: white;
             font-size: 35px;
             z-index: 10001;
             cursor: pointer;
             display: none;
         }
+
+        /*************************************************************/
 
         .hero{
             height: 100%;
