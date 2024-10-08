@@ -26,6 +26,26 @@
             text-decoration: none;
         }
 
+        /******************** Animation spider *******************/
+
+        body {
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+        canvas {
+            height: 100vh;
+            width: 100%;
+        }
+
+           
+
+        
+
+        /********************************************************/
+
         
         body, html {
             margin: 0;
@@ -112,112 +132,58 @@
             background-color: #013750; /* Couleur d'arrière-plan lors du survol */
         }
 
-        /* Style global pour gérer le box-sizing et le positionnement des pseudo-éléments */
-        *, ::after, ::before {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* Assure que les marges et le padding sont inclus dans les dimensions */
-        }
-
-        /* Style pour la navigation */
-        .navlist {
+        .navlist{
             display: flex;
-            position: relative;
         }
 
-        /* Style pour les liens dans la navigation */
-        .navlist a {
+        .navlist a{
             color: white;
             margin-left: 60px;
             font-size: 15px;
             font-weight: 600;
-            position: relative;
-            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
-            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all .55s ease;
         }
 
-        /* Effet de surlignage pour les écrans de largeur supérieure à 45em (environ 720px) */
-        
-            .navlist a::after { 
-                position: absolute;
-                bottom: 0;
-                content: '';
-                display: block;
-                background-color: currentColor; /* Utilise la couleur actuelle du texte */
-                transition: width 0.3s ease; /* Transition fluide de la largeur */
-                width: 0; /* Par défaut, la largeur du surlignage est 0, donc invisible */
-                border-radius: 2px; /* Arrondit les bords du surlignage */
-                height: 2px; /* Hauteur de la ligne de surlignage */
-                left: 0; /* Aligné à gauche */
-            }
-
-            .navlist a:hover::after { /* Effet de survol */
-                width: 100%; /* Le surlignage s'étend sur toute la largeur du lien */
-            }
-        
+        .navlist a:hover{
+            border-bottom: 2px solid white;
+        }
 
         /* Style pour masquer le sous-menu par défaut */
         .navlist .dropdown-content {
             display: none;
             position: absolute;
             background-color: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
-            min-width: 300px;
+            min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
-        /* Style pour les éléments du sous-menu */
         .navlist .dropdown-content li {
             list-style-type: none;
             padding: 8px 16px;
         }
 
-        /* Style pour les liens dans le sous-menu */
         .navlist .dropdown-content li a {
             color: white;
             text-decoration: none;
             display: block;
-            position: relative;
-            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
-            font-size: 14px;
         }
-
-        /* Effet de surlignage pour les liens du sous-menu */
-        
-            .navlist .dropdown-content li a::after {
-                position: absolute;
-                bottom: 0;
-                content: '';
-                display: block;
-                background-color: currentColor;
-                transition: width 0.3s ease;
-                width: 0; /* Par défaut, la largeur du surlignage est 0 */
-                border-radius: 2px;
-                height: 2px;
-                left: 0;
-            }
-
-            .navlist .dropdown-content li a:hover::after {
-                width: 100%; /* Le surlignage s'étend sur toute la largeur */
-            }
-        
 
         /* Afficher le sous-menu lorsqu'il est actif */
         .navlist .dropdown-content.show {
             display: block;
         }
 
-        /* Style pour l'icône de menu (en mode mobile par exemple) */
-        #menu-icon {
+        /**********************************************/
+
+        #menu-icon{
             color: white;
             font-size: 35px;
             z-index: 10001;
             cursor: pointer;
             display: none;
         }
-
-        /*************************************************************/
 
         ::selection {
 			background-color: #f7f7f7; /* Changer la couleur de surlignage */
@@ -441,24 +407,6 @@
             max-width: 600px;
             text-align: center;
             border-radius: 10px;
-        }
-
-        .modal .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            font-weight: bold;
-            color: #ffffff;
-            cursor: pointer;
-            z-index: 1001; /* S'assurer que la croix est au-dessus des autres éléments */
-        }
-
-        .modal .close:hover,
-        .modal .close:focus {
-            color: rgb(255, 255, 255); /* Changer la couleur sur survol */
-            text-decoration: none;
-            cursor: pointer;
         }
 
         .modal-content h1 {
@@ -761,9 +709,11 @@
     </script>
 </head>
 <body>
+    
     <div id="app">
+        
         <header>
-            <a href="#" class="logo" id="logo">PROJET</a>
+            <a href="#" class="logo" id="logo">PROJET 🕸</a>
             <div class="dropdown-menu" id="dropdown-menu">
                 <ul>
                     <li><a href="index.html">CNFPT</a></li>
@@ -787,8 +737,6 @@
                         <li><a href="https://moncompte.cnfpt.fr/" target="_blank">Mon Compte CNFPT</a></li>
                         <li><a href="https://formadist.cnfpt.fr/gestion" target="_blank">FORMADIST</a></li>
                         <li><a href="https://auth.cnfpt.fr/carbon/admin/index.jsp" target="_blank">WSO2</a></li>
-                        <li><a href="https://e-communautes.cnfpt.fr/admin/people" target="_blank">E-Communautés</a></li>
-                        <li><a href="https://www.cnfpt.fr/rechercher-formation" target="_blank">Rechercher une formation</a></li>
                         <li><a href="https://cnfptprod.service-now.com/login.do" target="_blank">Service-Now</a></li>
                         <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?FolderCTID=0x012000D99D5B8878679144BC68AF0FFDDB9E57&id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFiches%20signal%C3%A9tiques%20ServiceNow&viewid=40bda1d2%2Daaff%2D4975%2D8034%2Dc1946153cbff" target="_blank">Fiches signalétiques</a></li>
                     </ul>
@@ -830,7 +778,272 @@
                 </div>
             </div>
 
+            <!--********************** Animation spider **************************-->
+
+            <canvas id="canvas"></canvas>
+  
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/dat.gui"></script>
+            
+            <script>
+                /*--------------------
+                Vars
+                --------------------*/
+                const canvas = document.querySelector("#canvas");
+                const ctx = canvas.getContext("2d");
+                const win = {
+                w: window.innerWidth,
+                h: window.innerHeight
+                };
+                const mouse = {
+                x: win.w * 0.5,
+                y: win.h * 0.5,
+                lerpX: win.w * 0.5,
+                lerpY: win.h * 0.5,
+                stepX: 0,
+                stepY: 0,
+                oldStepX: 0,
+                oldStepY: 0,
+                angle: 0
+                };
+                const opts = {
+                cellSize: 40,
+                pawRadius: 94,
+                pawHeight: 200,
+                pawRandomStep: 0.2,
+                bodyHeight: 20,
+                spiderOffsetX: 30,
+                spiderOffsetY: 40,
+                shadowY: 0.3,
+                speed: 0.12,
+                stop: false,
+                jump: 0
+                };
+                let cols = 0;
+                let rows = 0;
+
+                /*--------------------
+                Lerp
+                --------------------*/
+                const lerp = (a, b, c) => {
+                return (1 - c) * a + c * b;
+                };
+
+                /*--------------------
+                Random
+                --------------------*/
+                const random = (start, range) => {
+                return start - range + Math.random() * range * 2;
+                };
+
+                /*--------------------
+                Resize
+                --------------------*/
+                const handleResize = () => {
+                win.w = window.innerWidth;
+                win.h = window.innerHeight;
+                canvas.width = win.w;
+                canvas.height = win.h;
+                cols = Math.round(win.w / opts.cellSize) + 1;
+                rows = Math.round(win.h / opts.cellSize) + 1;
+                };
+                handleResize();
+                window.addEventListener("resize", handleResize);
+
+                /*--------------------
+                Paws
+                --------------------*/
+                const Paws = [
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 },
+                { x: win.w * 0.5, y: win.h * 0.5 }
+                ];
+
+                /*--------------------
+                Clear
+                --------------------*/
+                const clear = () => {
+                ctx.clearRect(0, 0, win.w, win.h);
+                };
+
+                /*--------------------
+                Circle
+                --------------------*/
+                const circle = (x, y, r, c) => {
+                ctx.fillStyle = c;
+                ctx.beginPath();
+                ctx.ellipse(x, y, r, r, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+                };
+
+                /*--------------------
+                Rect
+                --------------------*/
+                const rect = (x, y, r, c) => {
+                ctx.fillStyle = c;
+                ctx.fillRect(x, y, r, r);
+                };
+
+                /*--------------------
+                Walk
+                --------------------*/
+                const walk = () => {
+                let ind = 0;
+                Array(10)
+                    .fill()
+                    .forEach((a, i) => {
+                    const theta = i / 10;
+                    if (i % 5 === 0) return;
+                    const x = random(
+                        mouse.x + cols * 0.5 + opts.pawRadius * Math.sin(theta * Math.PI * 2),
+                        opts.pawRadius * opts.pawRandomStep
+                    );
+                    const y = random(
+                        mouse.y + rows * 0.5 + opts.pawRadius * Math.cos(theta * Math.PI * 2),
+                        opts.pawRadius * opts.pawRandomStep
+                    );
+
+                    gsap.to(Paws[ind++], {
+                        x,
+                        y,
+                        duration: opts.speed,
+                        ease: "power3.out()",
+                        delay: ((i + 2) % 4) * 0.1
+                    });
+                    });
+                };
+
+                /*--------------------
+                Check Step
+                --------------------*/
+                const checkStep = () => {
+                mouse.stepX = Math.round((mouse.x / win.w) * (cols - 1)) * opts.cellSize;
+                mouse.stepY = Math.round((mouse.y / win.h) * (rows - 1)) * opts.cellSize;
+
+                if (mouse.oldStepX !== mouse.stepX || mouse.oldStepY !== mouse.stepY) {
+                    walk();
+                }
+
+                mouse.oldStepX = mouse.stepX;
+                mouse.oldStepY = mouse.stepY;
+                };
+
+                /*--------------------
+                Draw Spider
+                --------------------*/
+                const drawSpider = () => {
+                const x = mouse.lerpX - opts.spiderOffsetX;
+                const y = mouse.lerpY - opts.spiderOffsetY;
+
+                // Shadows
+                Paws.forEach((p, i) => {
+                    ctx.strokeStyle = "#013750";
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + opts.bodyHeight);
+                    const x2 = lerp(x, p.x, 0.5);
+                    const y2 = lerp(y + opts.jump, p.y, opts.shadowY);
+                    ctx.quadraticCurveTo(x2, y2, p.x, p.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                });
+
+                // Paws
+                Paws.forEach((p, i) => {
+                    ctx.strokeStyle = "black";
+                    ctx.lineWidth = 1;
+
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + opts.jump);
+                    const x1 = lerp(x, p.x, 0.5);
+                    const y1 = lerp(y + opts.jump, p.y - opts.pawHeight, 0.5);
+                    ctx.quadraticCurveTo(x1, y1, p.x, p.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                });
+                };
+
+                /*--------------------
+                Draw Mouse
+                --------------------*/
+                const drawMouse = () => {
+                mouse.lerpX = lerp(mouse.lerpX, mouse.x, 0.1);
+                mouse.lerpY = lerp(mouse.lerpY, mouse.y, 0.1);
+
+                if (opts.stop) {
+                    mouse.lerpX = win.w * 0.5;
+                    mouse.lerpY = win.h * 0.5;
+                    mouse.x = win.w * 0.5;
+                    mouse.y = win.h * 0.5;
+                }
+                checkStep();
+                };
+
+                /*--------------------
+                Draw
+                --------------------*/
+                const draw = (t) => {
+                clear();
+                drawMouse();
+                drawSpider();
+                requestAnimationFrame(draw);
+                };
+                draw();
+
+                
+
+                /*--------------------
+                Mouse
+                --------------------*/
+                const handleMouseMove = (e) => {
+                if (opts.stop) {
+                    mouse.lerpX = win.w * 0.5;
+                    mouse.lerpY = win.h * 0.5;
+                    mouse.x = win.w * 0.5;
+                    mouse.y = win.h * 0.5;
+                } else {
+                    mouse.x = e.clientX;
+                    mouse.y = e.clientY;
+                }
+                };
+                const handleTouchMove = (e) => {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+                };
+                const handleMouseDown = () => {
+                if (opts.stop) return;
+                gsap.killTweensOf(opts);
+                gsap.to(opts, {
+                    jump: opts.bodyHeight,
+                    duration: 0.5,
+                    ease: "power3.out"
+                });
+                };
+                const handleMouseUp = () => {
+                if (opts.stop) return;
+                gsap.killTweensOf(opts);
+                gsap.to(opts, {
+                    jump: 0,
+                    duration: 2,
+                    ease: "elastic(1.4, 0.1)"
+                });
+                };
+                window.addEventListener("mousemove", handleMouseMove);
+                window.addEventListener("touchstart", handleTouchMove);
+                window.addEventListener("touchmove", handleTouchMove);
+                window.addEventListener("mousedown", handleMouseDown);
+                window.addEventListener("mouseup", handleMouseUp);
+            </script>
+
         </section> 
+
+        <!--********************************************************************-->
 
         <div class="scroll-down" id="scroll-down">
             <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
@@ -842,6 +1055,7 @@
         </div>
        
     </div>
+    
     
 </body>
 </html>
