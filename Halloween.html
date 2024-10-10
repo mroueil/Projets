@@ -619,6 +619,14 @@
         .center ul li:nth-child(5){
             animation-delay: 1.6s;
         }
+
+        .ghost {
+            position: absolute;
+            width: 200px; /* Ajustez la taille selon vos besoins */
+            opacity: 0.5; /* Opacité par défaut à 50 % */
+            transition: left 1s ease, top 1s ease, opacity 0.5s ease; /* Transition de la position et de l'opacité */
+            z-index: -1;
+        }
         
 
     </style>
@@ -860,6 +868,36 @@
 
         
     </script>
+
+    <script>
+        function randomPosition(ghost) {
+            const windowWidth = window.innerWidth - 200; // Largeur de la fenêtre - largeur de l'image
+            const windowHeight = window.innerHeight - 200; // Hauteur de la fenêtre - hauteur de l'image
+            const randomX = Math.random() * windowWidth;
+            const randomY = Math.random() * windowHeight;
+
+            ghost.style.left = randomX + 'px';
+            ghost.style.top = randomY + 'px';
+        }
+
+        function moveGhost(ghost) {
+            ghost.style.opacity = '0.01'; // Réduit l'opacité à 25 % pendant le mouvement
+            randomPosition(ghost); // Positionner aléatoirement le GIF
+            setTimeout(() => {
+                ghost.style.opacity = '0.5'; // Rétablit l'opacité à 50 % après un délai
+            }, 500); // Délai de 500 ms pour correspondre à la durée du mouvement
+        }
+
+        function animateGhosts() {
+            const ghosts = document.querySelectorAll('.ghost');
+            ghosts.forEach(ghost => {
+                moveGhost(ghost);
+            });
+        }
+
+        setInterval(animateGhosts, 2000); // Changez le délai ici pour modifier la fréquence
+    </script>
+
 </head>
 <body>
     
@@ -955,6 +993,9 @@
 
             <!--********************** Animation spider **************************-->
             <section class="rain"></section>
+
+            <img class="ghost" src="Boo.gif" alt="Fantôme 1">
+            <img class="ghost" src="Boo.gif" alt="Fantôme 2">
 
             <canvas id="canvas"></canvas>
   
