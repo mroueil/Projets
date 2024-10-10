@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
 
     <style>
         *{
@@ -25,7 +24,6 @@
             font-family: 'Poppins',sans-serif;
             list-style: none;
             text-decoration: none;
-            font-size: 20px; /* Définit la taille de base à 20px */
         }
 
 		header{
@@ -54,7 +52,7 @@
             position: absolute;
             top: 100%; /* Positionne juste en dessous du logo */
             left: 0;
-            background-color: rgba(3, 108, 156, 0.8); /* Couleur #036c9c avec 50% de transparence */
+            background-color: rgba(216, 110, 24, 0.5); /* Couleur #036c9c avec 50% de transparence */
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             width: 200px; /* Ajustez la largeur si nécessaire */
@@ -79,7 +77,7 @@
         }
 
         .dropdown-menu ul li a:hover {
-            background-color: #013750; /* Couleur d'arrière-plan lors du survol */
+            background-color: #502701; /* Couleur d'arrière-plan lors du survol */
         }
 
         .navlist{
@@ -103,7 +101,7 @@
         .navlist .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
+            background-color: rgba(216, 110, 24, 0.5); /* Couleur #036c9c avec 50% de transparence */
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -139,7 +137,7 @@
             height: 100%;
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(245.59deg, #189CD8 0%, #036c9c 28.53%, #013750 75.52%);
+            background: linear-gradient(245.59deg, #d86e18 0%, #9c5503 28.53%, #502701 75.52%);
             position: relative;
             display: grid;
             grid-template-columns: repeat(2,1fr);
@@ -185,15 +183,10 @@
             height: auto;
         }
 
-        img{
-            width: 300px;
-            height: auto;
-        }
-
         .hero-text a{
             display: inline-block;
             color: white;
-            background: #036c9c;
+            background: #9c5503;
             border: 1px solid transparent;
             padding: 12px 30px;
             line-height: 1.4;
@@ -232,7 +225,7 @@
             padding: 12px;
             font-size: 25px;
             color: white;
-            background: #036c9c;
+            background: #d86e18;
             border-radius: 30px;
             transition: all .50s ease;
         }
@@ -309,7 +302,7 @@
                 right: -100%;
                 width: 300px;
                 height: 40vh;
-                background: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
+                background: rgba(216, 110, 24, 0.5); /* Couleur #d86e18 avec 50% de transparence */
                 display: flex;
                 align-items: center;
                 flex-direction: column;
@@ -346,7 +339,7 @@
         }
 
         .modal-content {
-            background-color: #013750;
+            background-color: #9c5503;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
@@ -415,7 +408,7 @@
         }
 
         #bouton:hover {
-            background-color: #013750;
+            background-color: #502701;
 			border: 1px solid #ffffff;
 			color: #ffffff;
         }
@@ -497,14 +490,14 @@
 		}
 		
 		input {
-			background-color: #013750;
+			background-color: #502701;
 			border: 1px solid #ffffff;
 		}
 
 		/* Styles pour les champs de saisie au passage de la souris */
 		
 		input[type="text"]:hover {
-			background-color: #013750;
+			background-color: #502701;
 			border: 1px solid #ffffff;
 			color: #ffffff;
 			font-weight: bold; /* Rendre le texte en gras */
@@ -525,7 +518,7 @@
 		 
 		 select {
 			border: 1px solid #ffffff;
-			background-color: #013750;
+			background-color: #502701;
 			color: #ffffff;
 			/*font-weight: bold; /* Rendre le texte en gras */
 			border-radius: 5px; /* Ajouter des coins arrondis */
@@ -603,59 +596,6 @@
 			 width:200px;
 		}
 
-        /************************ Slide ************************************/
-
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            height: 350px; /* Set this to the desired height */
-            overflow: hidden;
-            background-color: transparent;
-        }
-
-
-        .mySlides {
-            display: none;
-            width: 100%;
-            height: 100%; /* Ensure the slides take up the full container height */
-			padding: 20px; /* Add padding to the slides */
-            box-sizing: border-box;
-            background-color: transparent;
-        }
-
-        
-
-        .text {
-            color: #fff;
-            font-size: 22px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: calc(100% - 24px); /* Adjust for padding */
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .dots-container {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active, .dot:hover {
-            background-color: #717171;
-        }
-
     </style>
 
     <!-- scrollreveal effect -->
@@ -725,78 +665,88 @@
         });
 
 		
-		/******************** Slide **********************/
+		/************************ Générateur **************************/
 
-        let slideIndex = 1;
-        let slideInterval;
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-        }
-
-        function changeSlide(n) {
-            clearInterval(slideInterval);
-            showSlides(slideIndex += n);
-            slideInterval = setInterval(function() { showSlides(slideIndex += 1); }, 10000);
-        }
-
-        function currentSlide(n) {
-            clearInterval(slideInterval);
-            showSlides(slideIndex = n);
-            slideInterval = setInterval(function() { showSlides(slideIndex += 1); }, 10000);
-        }
-
-        // Initialize the slideshow
-        function createSlides(numSlides, texts) {
-            let container = document.querySelector('.slideshow-container');
-            let dotsContainer = document.querySelector('.dots-container');
-            for (let i = 0; i < numSlides; i++) {
-                let slideDiv = document.createElement('div');
-                slideDiv.className = 'mySlides fade';
-                
-                let textDiv = document.createElement('div');
-                textDiv.className = 'text';
-                textDiv.innerHTML = texts[i];
-                slideDiv.appendChild(textDiv);
-                
-                container.appendChild(slideDiv);
-
-                let dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.onclick = function() { currentSlide(i + 1); };
-                dotsContainer.appendChild(dot);
-            }
-            showSlides(slideIndex);
-            slideInterval = setInterval(function() { showSlides(slideIndex += 1); }, 10000);
-        }
-
-        const numSlides = 6; // Change this number to add more slides
-        const texts = [
-            '<table class="styled-table"><tr><td><b>Dispatch des formulaires :</b><br><br>Le collaborateur qui commence à 8h fait le dispatch de 8h à 12h puis de 13h à 16h.<br>Le collaborateur qui commence à 10h30 fait le dispatch de 12h à 13h puis de 16h à 18h30.<br><br>Le référent technique formulaire fera le dispatch renfort.<br>Merci de communiquer et de demander au référent technique si vous avez besoin.<br></td></tr></table><br><br>',
-            '<table class="styled-table"><tr><td><b>Voici les personnes désignées comme backups : </b><br><br><b>Cécile</b> : Backup de <b>Corentin</b><br><b>Daniel</b> : Backup de <b>Samuel</b><br><b>Cédric</b> : Backup de <b>Maxime</b></td><td><img src="Backup.jpeg" alt="Slide Image"></td></tr></table>',
-            '<br><table class="styled-table"><tr><td><b>Utilisation du Code Structure :</b><br><br> Nous devons escalader en délégation pour modifier l\'état d\'une session d\'inscription en terminée.<br>Le routage doit se faire vers la délégation qui a mis en place et organisé la formation en question.<br>Pour ce faire nous devons nous baser sur le code structure de la formation pour identifier la délégation organisatrice de la formation.<br><br>Exemple formation : <b>84</b>:SXNAA221 => <b>84</b> = code structure</td></tr></table><br>',
-            '<table class="styled-table"><tr><td><b>Il est crucial de faire la différence entre les mails en direct et les demandes de support éditeurs.</b><br><br>Lisez attentivement la description du ticket.<br><br>Vérifiez l\'adresse d\'envoi du mail :<br><br>Les mails en direct seront envoyés à <b>cnfptprod@service-now.com</b> tandis que les demandes de support éditeurs seront envoyées à <b>support.editeurs@cnfpt.fr</b>.</td></tr></table><br>',
-            '<div style="text-align: center;"><div style="display: inline-block; text-align: left;">Procédure de transfert d\'appel :<br><br>• Appuyer sur Transfert<br>• Cliquer sur REC_AGENTS<br>• Sélectionner la personne à qui on transfère l\'appel<br>• Appuyer sur "transfert à froid"</div></div>',
-            '<table class="styled-table"><tr><td>Si vous avez besoin d\'ajouter des diapositives supplémentaires, veuillez en faire la demande via Teams.<br><br>Je vous souhaite une excellente journée.</td></tr></table><br><br><br>',
-        ]; // Customize the texts for each slide
-        const image = 'Slide.jpg'; // Use the same image for all slides
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            createSlides(numSlides, texts, image);
-        });
+		var input;
+        var NewPass;
+        var Category;
+        var newLength;
+       
+		var Couleurs = ["Orange", "Rose", "Violet", "Magenta", "Fushia", "Mauve", "Cyan", "Rouge", "Jaune", "Azur", "Blanc", "Bleu" ];
+		var Meteo = ["Nuages", "Soleil", "Eclair", "Lune", "Orage", "Neige", "Ciel"];
+		var Nature = ["Feuille", "Arbre", "Fleurs", "Foret", "Plume", "Ocean", "Sable", "Tulipe", "Marguerite", "Muget", "Violette", "Tournesol", "Sapin", "Roseau", "Bambou", "Lilas", "Palmier", "Rosier", "Cerisier", "Fraisier", "Olivier", "Plage", "Montagne" ];
+		var Formation = ["Formation" ];  
+		var Sports = ["Billard", "Poker", "Petanque", "Foot", "Basket", "Tennis", "Golf", "Danse" ];
 
 
+		function search_mdp(myMin, myMax) {
+			var currentYear = new Date().getFullYear();
+			var randomDigits = () => Math.floor(Math.random() * 90) + 10; // generates a random number between 10 and 99
+
+			function getMdp(word) {
+				if (word.length < 6) {
+					return word + currentYear;
+				} else {
+					return word + randomDigits();
+				}
+			}
+
+			COULEURS = Couleurs[Math.floor(Math.random() * Couleurs.length)];
+			document.getElementById('COULEURS').innerHTML = getMdp(COULEURS);
+
+			METEO = Meteo[Math.floor(Math.random() * Meteo.length)];
+			document.getElementById('METEO').innerHTML = getMdp(METEO);
+
+			NATURE = Nature[Math.floor(Math.random() * Nature.length)];
+			document.getElementById('NATURE').innerHTML = getMdp(NATURE);
+
+			FORMATION = Formation[Math.floor(Math.random() * Formation.length)];
+			document.getElementById('FORMATION').innerHTML = FORMATION;
+			Chiffre_Formation = Math.floor(Math.random() * (myMax - myMin) + myMin);
+			document.getElementById('Chiffre_Formation').innerHTML = Chiffre_Formation;
+
+			SPORTS = Sports[Math.floor(Math.random() * Sports.length)];
+			document.getElementById('SPORTS').innerHTML = getMdp(SPORTS);
+		}
+
+
+		function save_password (){
+			let NewPass = document.getElementById('additionbar').value
+			let Category = document.getElementById('choix_categorie').value
+			
+			if (Category == 03){
+				let newLengthCouleurs = Couleurs.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 05){
+				let newLengthMeteo = Meteo.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 06){
+				let newLengthNature = Nature.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 07){
+				let newLengthObjets = Formation.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 09){
+				let newLengthSports = Sports.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 00){
+				alert("Vous devez sélectionner une catégorie avant d'ajouté un nouveau mot de passe.") ;
+			}
+		}
+
+		//Permet d'afficher le resultat lorsqu'on appuy sur la touche "Entrée" du clavier
+		document.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				search_delegation();
+				let Departement = document.getElementById('searchbarDepartement').value = "" ;
+				let Structure = document.getElementById('searchbarStructure').value = "" ;
+			}
+		});
 
     </script>
 </head>
@@ -804,10 +754,10 @@
 	
 		<header>
 			<a href="#" class="logo" id="logo">PROJET</a>
-            <a href="Consignes - Halloween.html" class="logo" id="Halloween">🕸</a>
+            <a href="Generateur.html" class="logo" id="Halloween">🕸</a>
 			<div class="dropdown-menu" id="dropdown-menu">
 				<ul>
-					<li><a href="index.html">CNFPT</a></li>
+					<li><a href="Halloween.html">CNFPT</a></li>
 					<li><a href="#">Projet 2</a></li>
 					<li><a href="#">Projet 3</a></li>
 					<li><a href="#">Projet 4</a></li>
@@ -816,34 +766,20 @@
 			</div>
 
 			<ul class="navlist">
-				<li><a href="index.html">Accueil</a></li>
-				<li class="dropdown">
-                    <a href="Consignes.html" id="tools-menu">Procédures</a>
-                    <ul class="dropdown-content show" id="tools-submenu">
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FFORMADIST%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">FORMADIST </a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FINSCRIPTION%20EN%20LIGNE%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">INSCRIPTION EN LIGNE</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FHORS%2DPERIMETRE%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">HORS-PERIMETRE</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/:x:/r/sites/Altimancea-CNFPT/_layouts/15/Doc.aspx?sourcedoc=%7B58880611-3B9B-4794-BA45-13DD2A4AEC29%7D&file=Coordonn%C3%A9es%20Mission%20apprentissage%20du%20CNFPT%20par%20r%C3%A9gion.xlsx&action=default&mobileredirect=true" target="_blank">Périmètre Apprentissage</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FGestionnaire%5Fiel%5Flivret%5F2%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">IEL-LIVRET GESTIONNAIRE</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FAgent%5Fiel%5Flivret%5F1%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">IEL-LIVRET AGENT</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT%2FTOAD%2D%20Recherche%20agent%2Epdf&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F02%5FProc%C3%A9dure%20CNFPT" target="_blank">TOAD-Recherche agent</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea/SiteAssets/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2FSiteAssets%2FSitePages%2FCNFPT%2FAssistance%2Dutilisateur%2Dconnexion%2D%C3%A0%2DFormadist%2Epdf&parent=%2Fsites%2FAltimancea%2FSiteAssets%2FSitePages%2FCNFPT" target="_blank">Assistance Utilisateur</a></li>
-                    </ul>
-                </li>
-				<li><a href="Template.html">Template</a></li>
-				<li><a href="Groupes.html">Groupes</a></li>
-				<li><a href="Generateur.html">Générateur</a></li>
+				<li><a href="Halloween.html">Accueil</a></li>
+				<li><a href="Consignes - Halloween.html">Procédures</a></li>
+				<li><a href="Template - Halloween.html">Template</a></li>
+				<li><a href="Groupes - Halloween.html">Groupes</a></li>
+				<li><a href="Generateur - Halloween.html">Générateur</a></li>
 				<li class="dropdown">
                     <a href="#" id="tools-menu">Outils</a>
                     <ul class="dropdown-content" id="tools-submenu">
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT%2Fvang%40Inf%5FPrd%5FSL200149%5FRebond%5FRDP%5FC%5FSCC%5FCDS%5Fotp%2Erdp&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT" target="_blank">RDP Machine de rebond</a></li>
+                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT%2Fvang%40Inf%5FPrd%5FSL200149%5FRebond%5FRDP%5FC%5FSCC%5FCDS%5Fotp%2Erdp&parent=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFormation%20CNFPT" target="_blank"><i class="ri-computer-line"></i>&nbsp RDP Machine de rebond</a></li>
                         <li><a href="https://moncompte.cnfpt.fr/" target="_blank">Mon Compte CNFPT</a></li>
                         <li><a href="https://formadist.cnfpt.fr/gestion" target="_blank">FORMADIST</a></li>
                         <li><a href="https://auth.cnfpt.fr/carbon/admin/index.jsp" target="_blank">WSO2</a></li>
                         <li><a href="https://e-communautes.cnfpt.fr/admin/people" target="_blank">E-Communautés</a></li>
                         <li><a href="https://www.cnfpt.fr/rechercher-formation" target="_blank">Rechercher une formation</a></li>
-                        <li><a href="https://cnfptprod.service-now.com/login.do" target="_blank">Service-Now</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?FolderCTID=0x012000D99D5B8878679144BC68AF0FFDDB9E57&id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFiches%20signal%C3%A9tiques%20ServiceNow&viewid=40bda1d2%2Daaff%2D4975%2D8034%2Dc1946153cbff" target="_blank">Fiches signalétiques</a></li>
                     </ul>
                 </li>
 			</ul>
@@ -854,15 +790,50 @@
     
     <section class="hero" id="cnfpt">
         <div class="hero-text">
-			<div class="slideshow-container">
-                <!-- Slides will be inserted here dynamically -->
-            </div>
-            <div class="dots-container">
-                <!-- Dots will be inserted here dynamically -->
-            </div>
+			<center>
+				<table>
+					<thead>
+				<tr>
+					<td><p><font size="5" face ="calibri"><b>Générateur de mots de passe</b></font></p></td>
+				</tr>
+			</thead>
+			
+					<tr>
+						<td>
+							<p><font size="4" face ="calibri"><button class="favorite styled"type="button" id="bouton" onclick="search_mdp(10, 99)"> Cliquez ici </font></button></p>
+							<p><font size="4" face ="calibri"> Couleurs : &nbsp <b><span id="COULEURS"></span><span id="Chiffre_Couleurs"></span></b></font></p>
+							<p><font size="4" face ="calibri"> Météo : &nbsp <b><span id="METEO"></span><span id="Chiffre_Meteo"></span></b></font></p>
+							<p><font size="4" face ="calibri"> Nature : &nbsp <b><span id="NATURE"></span><span id="Chiffre_Nature"></span></b></font></p>
+							<p><font size="4" face ="calibri"> Formation : &nbsp <b><span id="FORMATION"></span><span id="Chiffre_Formation"></span></b></font></p>
+							<p><font size="4" face ="calibri"> Sports : &nbsp <b><span id="SPORTS"></span><span id="Chiffre_Sports"></span></b></font></p>
+							
+							<br><br>			
+							
+							<p><font size="4" face ="calibri"><b>Nouveau mot de passe :</b></p>
+		
+							<div class="centre">
+							<div class="titre_centre">
+							<select id="choix_categorie" class="liste">
+							<option value="00">Sélectionnez une catégorie</option>
+							<option value="03">Couleurs</option>
+							<option value="05">Météo</option>
+							<option value="06">Nature</option>
+							<option value="07">Formation</option>
+							<option value="09">Sports</option>
+							</select>
+							</div>
+							</div>
+							
+							<p><input id="additionbar"  type="text" name="addition" placeholder="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button class="favorite styled"type="button" id="bouton"  onclick="save_password()">Ajouter</font></button></p>
+		
+						</td>		
+						
+					</tr>
+		
+			
+				</table>
 			</center>
 		</div>
-
 			
 
     </section>

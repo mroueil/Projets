@@ -80,112 +80,58 @@
             background-color: #013750; /* Couleur d'arrière-plan lors du survol */
         }
 
-        /* Style global pour gérer le box-sizing et le positionnement des pseudo-éléments */
-        *, ::after, ::before {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* Assure que les marges et le padding sont inclus dans les dimensions */
-        }
-
-        /* Style pour la navigation */
-        .navlist {
+        .navlist{
             display: flex;
-            position: relative;
         }
 
-        /* Style pour les liens dans la navigation */
-        .navlist a {
+        .navlist a{
             color: white;
             margin-left: 60px;
             font-size: 15px;
             font-weight: 600;
-            position: relative;
-            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
-            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all .55s ease;
         }
 
-        /* Effet de surlignage pour les écrans de largeur supérieure à 45em (environ 720px) */
-        
-            .navlist a::after { 
-                position: absolute;
-                bottom: 0;
-                content: '';
-                display: block;
-                background-color: currentColor; /* Utilise la couleur actuelle du texte */
-                transition: width 0.3s ease; /* Transition fluide de la largeur */
-                width: 0; /* Par défaut, la largeur du surlignage est 0, donc invisible */
-                border-radius: 2px; /* Arrondit les bords du surlignage */
-                height: 2px; /* Hauteur de la ligne de surlignage */
-                left: 0; /* Aligné à gauche */
-            }
-
-            .navlist a:hover::after { /* Effet de survol */
-                width: 100%; /* Le surlignage s'étend sur toute la largeur du lien */
-            }
-        
+        .navlist a:hover{
+            border-bottom: 2px solid white;
+        }
 
         /* Style pour masquer le sous-menu par défaut */
         .navlist .dropdown-content {
             display: none;
             position: absolute;
             background-color: rgba(3, 108, 156, 0.5); /* Couleur #036c9c avec 50% de transparence */
-            min-width: 300px;
+            min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
-        /* Style pour les éléments du sous-menu */
         .navlist .dropdown-content li {
             list-style-type: none;
             padding: 8px 16px;
         }
 
-        /* Style pour les liens dans le sous-menu */
         .navlist .dropdown-content li a {
             color: white;
             text-decoration: none;
             display: block;
-            position: relative;
-            overflow: hidden; /* Cache le surlignage quand il sort de la zone du texte */
-            font-size: 14px;
         }
-
-        /* Effet de surlignage pour les liens du sous-menu */
-        
-            .navlist .dropdown-content li a::after {
-                position: absolute;
-                bottom: 0;
-                content: '';
-                display: block;
-                background-color: currentColor;
-                transition: width 0.3s ease;
-                width: 0; /* Par défaut, la largeur du surlignage est 0 */
-                border-radius: 2px;
-                height: 2px;
-                left: 0;
-            }
-
-            .navlist .dropdown-content li a:hover::after {
-                width: 100%; /* Le surlignage s'étend sur toute la largeur */
-            }
-        
 
         /* Afficher le sous-menu lorsqu'il est actif */
         .navlist .dropdown-content.show {
             display: block;
         }
 
-        /* Style pour l'icône de menu (en mode mobile par exemple) */
-        #menu-icon {
+        /**********************************************/
+
+        #menu-icon{
             color: white;
             font-size: 35px;
             z-index: 10001;
             cursor: pointer;
             display: none;
         }
-
-        /*************************************************************/
 
         .hero{
             height: 100%;
@@ -808,6 +754,7 @@
 	
 		<header>
 			<a href="#" class="logo" id="logo">PROJET</a>
+            <a href="Generateur - Halloween.html" class="logo" id="Halloween">🕸</a>
 			<div class="dropdown-menu" id="dropdown-menu">
 				<ul>
 					<li><a href="index.html">CNFPT</a></li>
@@ -833,8 +780,6 @@
                         <li><a href="https://auth.cnfpt.fr/carbon/admin/index.jsp" target="_blank">WSO2</a></li>
                         <li><a href="https://e-communautes.cnfpt.fr/admin/people" target="_blank">E-Communautés</a></li>
                         <li><a href="https://www.cnfpt.fr/rechercher-formation" target="_blank">Rechercher une formation</a></li>
-                        <li><a href="https://cnfptprod.service-now.com/login.do" target="_blank">Service-Now</a></li>
-                        <li><a href="https://sccfr.sharepoint.com/sites/Altimancea-CNFPT/Documents%20partages/Forms/AllItems.aspx?FolderCTID=0x012000D99D5B8878679144BC68AF0FFDDB9E57&id=%2Fsites%2FAltimancea%2DCNFPT%2FDocuments%20partages%2FP06%5FCdc%20CNFPT%2F03%5FCU%2FFiches%20signal%C3%A9tiques%20ServiceNow&viewid=40bda1d2%2Daaff%2D4975%2D8034%2Dc1946153cbff" target="_blank">Fiches signalétiques</a></li>
                     </ul>
                 </li>
 			</ul>
