@@ -968,9 +968,11 @@
 
         <div class="background-image" id="background"></div>
 
+        <!--********************** Animation toile d'areignee **************************-->
+
         <script>
             const background = document.getElementById('background');
-            
+    
             let lastMouseX = null;
             let lastMouseY = null;
             let isShaking = false; // Pour suivre si l'effet de tremblement est actif
@@ -1006,6 +1008,20 @@
                             isShaking = false; // Marque le tremblement comme inactif
                         }
                     }, 1000); // Après 1 seconde de stagnation, on enlève le tremblement
+                }
+            });
+    
+            document.addEventListener('click', (event) => {
+                // Vérifiez si le clic est dans le coin supérieur gauche (100px x 100px)
+                if (event.clientX < 600 && event.clientY < 600) {
+                    background.classList.add('shake'); // Ajoute la classe de tremblement
+                    isShaking = true; // Marque le tremblement comme actif
+    
+                    // Arrêtez le tremblement après 0.5 secondes
+                    setTimeout(() => {
+                        background.classList.remove('shake');
+                        isShaking = false; // Marque le tremblement comme inactif
+                    }, 500); // Durée du tremblement (0.5 secondes)
                 }
             });
         </script>
