@@ -627,7 +627,34 @@
             transition: left 1s ease, top 1s ease, opacity 0.5s ease; /* Transition de la position et de l'opacité */
             z-index: -1;
         }
-        
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('toile araignee.png'); /* Remplacez par le chemin de votre image */
+            background-position: left top; /* Positionner dans le coin gauche */
+            background-repeat: no-repeat;  /* Empêche la répétition */
+            background-size: auto; /* Vous pouvez ajuster selon vos besoins */
+            z-index: 2; /* Assurez-vous que l'image est en arrière-plan */
+            opacity: 0.5; /* Ajustez la transparence de l'image ici (0.5 = 50% de transparence) */
+            transition: transform 0.1s; /* Transition douce pour le tremblement */
+        }
+
+        .background-image.shake {
+            animation: shake 0.5s infinite; /* Animation de tremblement continue */
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-5px, -5px); }
+            40% { transform: translate(5px, 5px); }
+            60% { transform: translate(-5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0, 0); }
+        }
 
     </style>
 
@@ -901,6 +928,7 @@
 </head>
 <body>
     
+    
     <div id="app">
         
         <header>
@@ -938,7 +966,20 @@
             <div class="bx bx-menu" id="menu-icon"></div>
         </header>
 
-        
+        <div class="background-image" id="background"></div>
+
+        <script>
+            const background = document.getElementById('background');
+    
+            document.addEventListener('mousemove', (event) => {
+                // Vérifiez si la souris est dans le coin supérieur gauche de la page (100px x 100px)
+                if (event.clientX < 600 && event.clientY < 600) {
+                    background.classList.add('shake'); // Ajoute la classe de tremblement
+                } else {
+                    background.classList.remove('shake'); // Enlève la classe si la souris sort du coin
+                }
+            });
+        </script>
 
         
         
