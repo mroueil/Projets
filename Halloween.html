@@ -970,13 +970,42 @@
 
         <script>
             const background = document.getElementById('background');
+            
+            let lastMouseX = null;
+            let lastMouseY = null;
+            let isShaking = false; // Pour suivre si l'effet de tremblement est actif
     
             document.addEventListener('mousemove', (event) => {
                 // Vérifiez si la souris est dans le coin supérieur gauche de la page (100px x 100px)
                 if (event.clientX < 600 && event.clientY < 600) {
-                    background.classList.add('shake'); // Ajoute la classe de tremblement
+                    // Si la souris est dans le coin, on vérifie si elle a bougé
+                    if (lastMouseX !== event.clientX || lastMouseY !== event.clientY) {
+                        // Si la souris a bougé et que le tremblement n'est pas actif, on l'active
+                        if (!isShaking) {
+                            background.classList.add('shake'); // Ajoute la classe de tremblement
+                            isShaking = true; // Marque le tremblement comme actif
+                        }
+                    }
                 } else {
-                    background.classList.remove('shake'); // Enlève la classe si la souris sort du coin
+                    // Si la souris sort du coin, on enlève le tremblement
+                    background.classList.remove('shake'); // Enlève la classe de tremblement
+                    isShaking = false; // Marque le tremblement comme inactif
+                }
+    
+                // Mettez à jour la dernière position de la souris
+                lastMouseX = event.clientX;
+                lastMouseY = event.clientY;
+    
+                // Si la souris est dans le coin et statique, arrêtez l'animation après une seconde
+                if (isShaking) {
+                    setTimeout(() => {
+                        // Vérifiez si la souris est toujours dans le coin
+                        if (lastMouseX < 600 && lastMouseY < 600) {
+                            // Si elle est toujours dans le coin et n'a pas bougé, on enlève le tremblement
+                            background.classList.remove('shake'); 
+                            isShaking = false; // Marque le tremblement comme inactif
+                        }
+                    }, 1000); // Après 1 seconde de stagnation, on enlève le tremblement
                 }
             });
         </script>
