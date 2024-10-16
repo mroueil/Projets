@@ -675,23 +675,41 @@
             let menu = document.querySelector('#menu-icon');
             let navlist = document.querySelector('.navlist');
             
-            
+            // Pour gérer le clic sur l'icône de menu
             menu.onclick = () => {
                 menu.classList.toggle('bx-x');
                 navlist.classList.toggle('open');
             };
 
-            /* gérer le clic sur "Outils" et afficher/masquer le sous-menu. */
-
+            // Gérer le clic sur "Outils" et afficher/masquer le sous-menu.
             document.getElementById("tools-menu").addEventListener("click", function(event) {
                 event.preventDefault();
-                var submenu = document.getElementById("tools-submenu");
-                submenu.classList.toggle("show");
+                toggleDropdown("tools-submenu");
             });
 
-            /* Fermer le sous-menu "outils" si on clique ailleurs sur la page */
+            // Gérer le clic sur "Procédures" et afficher/masquer le sous-menu "Procédures".
+            document.getElementById("procedures-menu").addEventListener("click", function(event) {
+                event.preventDefault();
+                toggleDropdown("procedures-submenu");
+            });
+
+            // Fonction pour basculer l'affichage des sous-menus tout en fermant les autres
+            function toggleDropdown(submenuId) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(dropdown) {
+                    // Ferme les autres sous-menus s'ils sont ouverts
+                    if (dropdown.id !== submenuId && dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+                // Afficher ou cacher le sous-menu cliqué
+                var submenu = document.getElementById(submenuId);
+                submenu.classList.toggle("show");
+            }
+
+            // Fermer tous les sous-menus si on clique ailleurs sur la page
             window.onclick = function(event) {
-                if (!event.target.matches('#tools-menu')) {
+                if (!event.target.matches('#tools-menu') && !event.target.matches('#procedures-menu')) {
                     var dropdowns = document.getElementsByClassName("dropdown-content");
                     for (var i = 0; i < dropdowns.length; i++) {
                         var openDropdown = dropdowns[i];
@@ -702,7 +720,7 @@
                 }
             }
 
-            
+            // ScrollReveal pour les animations d'apparition
             const sr = ScrollReveal({
                 distance: '65px',
                 duration: 2600,
@@ -713,19 +731,17 @@
             sr.reveal('.hero-text', { delay: 200, origin: 'top' });
             sr.reveal('.hero-img', { delay: 450, origin: 'top' });
             sr.reveal('.scroll-down', { delay: 500, origin: 'right' });
-        });
 
-        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du logo et de son menu déroulant
             let logo = document.querySelector('#logo');
             let dropdownMenu = document.querySelector('#dropdown-menu');
 
             logo.addEventListener('click', function(event) {
                 event.preventDefault();
-                // Toggle the dropdown menu
                 dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
             });
 
-            // Optionnel : Fermer le menu si l'utilisateur clique en dehors
+            // Fermer le menu déroulant si l'utilisateur clique en dehors
             window.addEventListener('click', function(event) {
                 if (!logo.contains(event.target) && !dropdownMenu.contains(event.target)) {
                     dropdownMenu.style.display = 'none';
