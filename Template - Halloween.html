@@ -706,22 +706,19 @@
 
 		/**************************************** Template *******************************************/
 
+		// Objet pour stocker les valeurs précédentes des champs de formulaire
+		let previousValues = {};
+
+		// Fonction pour copier le texte dans le presse-papiers
 		function copyInset(text) {
-		  // Créer un élément temporaire de type textarea pour copier le texte
-		  var textarea = document.createElement("textarea");
-		  // Mettre le texte à copier dans l'élément textarea
-		  textarea.value = text;
-		  // Ajouter l'élément textarea à la fin du corps du document
-		  document.body.appendChild(textarea);
-		  // Sélectionner le contenu de l'élément textarea
-		  textarea.select();
-		  // Copier le texte sélectionné dans le presse-papiers
-		  document.execCommand("copy");
-		  // Supprimer l'élément textarea temporaire
-		  document.body.removeChild(textarea);
-		  
+			var textarea = document.createElement("textarea");
+			textarea.value = text;
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand("copy");
+			document.body.removeChild(textarea);
 		}
-		
+
 		function copyText() {
 			// Récupérer les éléments DOM
 			const elements = {
@@ -756,11 +753,10 @@
 			// Vérifier si CompteRetrouve est réglé sur "OUI"
 			const compteRetrouve = elements.CompteRetrouve.value;
 			if (compteRetrouve === "OUI") {
-				// Vérifier et imposer l'obligation des champs
 				const requiredFields = ['DateModification', 'DateCreation'];
 				for (const field of requiredFields) {
 					if (!elements[field].value.trim()) {
-						//alert("Veuillez renseigner la date modification mot de passe et la date de création.");
+						alert("Veuillez renseigner la date de modification et la date de création.");
 						return; // Arrêter l'exécution si l'un des champs obligatoires est vide
 					}
 				}
@@ -780,98 +776,111 @@
 
 			// Construction du texte à copier
 			let textToCopy = `--------------------------------------FORMADIST--------------------------------------
-		Vérification de l'état du compte Formadist
+			Vérification de l'état du compte Formadist
 
-		Matricule: ${elements.Matricule.value}
-		Identifiant Formadist retrouvé: ${elements.Identifiant.value}
-		Département vérifié: ${elements.Departement.value.startsWith("97") ? elements.Departement.value.substring(0, 3) : elements.Departement.value.substring(0, 2)}
-		Délégation: ${elements.Delegation.value}
+			Matricule: ${elements.Matricule.value}
+			Identifiant Formadist retrouvé: ${elements.Identifiant.value}
+			Département vérifié: ${elements.Departement.value.startsWith("97") ? elements.Departement.value.substring(0, 3) : elements.Departement.value.substring(0, 2)}
+			Délégation: ${elements.Delegation.value}
 
-		------------------------------------------WSO2------------------------------------------
-		Vérification de l'état du Mon Compte CNFPT
+			------------------------------------------WSO2------------------------------------------
+			Vérification de l'état du Mon Compte CNFPT
 
-		${compteRetrouve === "NON" ? "=> Pas de compte retrouvé dans WSO2\n" : ''}
-		Courriel principal: ${elements.CourrielPrincipal.value}
-		Courriel de secours: ${elements.CourrielSecours.value}
-		Account Locked: ${elements.AccountLocked.value}
-		Locked Reason: ${elements.LockedReason.value}
-		--------------------------------------------------------------------------------------------
-		Compte E-Communautés: ${elements.CompteECommunautes.value}
-		sAMAccountName: ${elements.SAMAccountName.value}
-		--------------------------------------------------------------------------------------------
+			${compteRetrouve === "NON" ? "=> Pas de compte retrouvé dans WSO2\n" : ''}
+			Courriel principal: ${elements.CourrielPrincipal.value}
+			Courriel de secours: ${elements.CourrielSecours.value}
+			Account Locked: ${elements.AccountLocked.value}
+			Locked Reason: ${elements.LockedReason.value}
+			--------------------------------------------------------------------------------------------
+			Compte E-Communautés: ${elements.CompteECommunautes.value}
+			sAMAccountName: ${elements.SAMAccountName.value}
+			--------------------------------------------------------------------------------------------
 		Utilisateur (identifiant technique): ${elements.Utilisateur.value}
-		Date modification mot de passe*: ${convertDate(elements.DateModification.value)}
-		Date erreur mot de passe: ${convertDate(elements.DateErreur.value)}
-		Date de dernière connexion: ${convertDate(elements.DateDerniereConnexion.value)}
-		Date de création*: ${elements.DateCreation.value}
+			Date modification mot de passe*: ${convertDate(elements.DateModification.value)}
+			Date erreur mot de passe: ${convertDate(elements.DateErreur.value)}
+			Date de dernière connexion: ${convertDate(elements.DateDerniereConnexion.value)}
+			Date de création*: ${elements.DateCreation.value}
 
-		--------------------------------------------IEL---------------------------------------------
-		Vérification IEL (cas mail erroné)
+			--------------------------------------------IEL---------------------------------------------
+			Vérification IEL (cas mail erroné)
 
-		Identifiant fiche agent : ${elements.IdFicheAgent.value}
-		Etat du Compte agent : ${elements.EtatCompteAgent.value}
-		Mail du champ 'Courriel personnel' Fiche agent IEL : ${elements.Mailperso.value}
-		Mail du champ 'Courriel professionnel' Fiche agent IEL : ${elements.Mailpro.value}
-		Mauvaise adresse mail : ${elements.MauvaiseAdMail.value}
-		Bonne adresse mail : ${elements.BonneAdMail.value}
-		Collectivité : ${elements.Collectivite.value}
-		Nom du gestionnaire : ${elements.Nom.value}
-		Adresse courriel du gestionnaire : ${elements.AdMailGestionnaire.value}
-		Téléphone : ${elements.Telephone.value}
-		--------------------------------------------------------------------------------------------`;
+			Identifiant fiche agent : ${elements.IdFicheAgent.value}
+			Etat du Compte agent : ${elements.EtatCompteAgent.value}
+			Mail du champ 'Courriel personnel' Fiche agent IEL : ${elements.Mailperso.value}
+			Mail du champ 'Courriel professionnel' Fiche agent IEL : ${elements.Mailpro.value}
+			Mauvaise adresse mail : ${elements.MauvaiseAdMail.value}
+			Bonne adresse mail : ${elements.BonneAdMail.value}
+			Collectivité : ${elements.Collectivite.value}
+			Nom du gestionnaire : ${elements.Nom.value}
+			Adresse courriel du gestionnaire : ${elements.AdMailGestionnaire.value}
+			Téléphone : ${elements.Telephone.value}
+			--------------------------------------------------------------------------------------------`;
 
-			// Créer et copier le texte dans le presse-papiers
-			const tempTextArea = document.createElement("textarea");
-			tempTextArea.value = textToCopy;
-			document.body.appendChild(tempTextArea);
-			tempTextArea.select();
-			document.execCommand("copy");
-			
-			// Supprimer l'élément temporaire après la copie
-			//document.body.removeChild(tempTextArea);
+			// Copier le texte dans le presse-papiers
+			copyInset(textToCopy);
 		}
-	
-	function clearFormFields() {
-		document.getElementById('Matricule').value = '';
-		document.getElementById('Identifiant').value = '';
-		document.getElementById('Département').value = '';
-		document.getElementById('Délégation').value = '';
-		document.getElementById('courrielPrincipal').value = '';
-		document.getElementById('courrielSecours').value = '';
-		document.getElementById('accountLocked').checked = false;
-		document.getElementById('lockedReason').value = '';
-		document.getElementById('compteECommunautes').checked = false;
-		document.getElementById('sAMAccountName').value = '';
-		document.getElementById('Utilisateur').value = '';
-		document.getElementById('dateModification').value = '';
-		document.getElementById('dateErreur').value = '';
-		document.getElementById('dateDerniereConnexion').value = '';
-		document.getElementById('dateCreation').value = '';
-		document.getElementById('IdFicheAgent').value = '';
-		document.getElementById('etatCompteAgent').value = 'SANS';
-		document.getElementById('Mailperso').value = '';
-		document.getElementById('Mailpro').value = '';
-		document.getElementById('MauvaiseAdMail').value = '';
-		document.getElementById('BonneAdMail').value = '';
-		document.getElementById('collectivite').value = '';
-		document.getElementById('Nom').value = '';
-		document.getElementById('AdMailGestionnaire').value = '';
-		document.getElementById('telephone').value = '';
-	}
 
-	document.addEventListener('keydown', function(event) {
-		// Vérifie si la combinaison de touches pressées est Ctrl+C
-		if (event.ctrlKey && event.key === 'x') {
-			// Empêche le comportement par défaut de Ctrl+C (copier)
-			event.preventDefault();
-			
-			// Appelle la fonction de copie de texte
-			copyText();
-			
-			// Vide les champs du formulaire
-			clearFormFields();
+		function clearFormFields() {
+			const fields = [
+				'Matricule', 'Identifiant', 'Département', 'Délégation', 'courrielPrincipal',
+				'courrielSecours', 'AccountLocked', 'lockedReason', 'compteECommunautes',
+				'sAMAccountName', 'Utilisateur', 'dateModification', 'dateErreur',
+				'dateDerniereConnexion', 'dateCreation', 'IdFicheAgent', 'etatCompteAgent',
+				'Mailperso', 'Mailpro', 'MauvaiseAdMail', 'BonneAdMail', 'collectivite',
+				'Nom', 'AdMailGestionnaire', 'telephone'
+			];
+			fields.forEach(field => {
+				const element = document.getElementById(field);
+				if (element) {
+					if (element.type === 'checkbox') {
+						element.checked = false;
+					} else {
+						element.value = '';
+					}
+				}
+			});
 		}
-	});
+
+		function storeFormValues() {
+			const formFields = document.querySelectorAll('input, textarea, select');
+			formFields.forEach(field => {
+				previousValues[field.name] = field.value; // Assurez-vous que chaque champ a un attribut name
+			});
+		}
+
+		function restoreFormValues() {
+			const formFields = document.querySelectorAll('input, textarea, select');
+			formFields.forEach(field => {
+				if (previousValues[field.name] !== undefined) {
+					field.value = previousValues[field.name];
+					if (field.type === 'checkbox') {
+						field.checked = previousValues[field.name] === 'true'; // Assurez-vous que les cases à cocher sont restaurées correctement
+					}
+				}
+			});
+		}
+
+		document.addEventListener('keydown', function(event) {
+			// Vérifie si du texte est sélectionné dans un champ de formulaire
+			const activeElement = document.activeElement;
+    		const isTextSelected = activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') && activeElement.selectionStart !== activeElement.selectionEnd;
+
+			// Vérifie si la combinaison de touches pressées est Ctrl + X
+			if (event.ctrlKey && event.key === 'x') {
+				if (!isTextSelected) {
+					event.preventDefault();
+					copyText();
+					storeFormValues();
+					clearFormFields();
+				}
+			}
+
+			// Vérifie si la combinaison de touches pressées est Ctrl + Z
+			if (event.ctrlKey && event.key === 'z') {
+				event.preventDefault();
+				restoreFormValues();
+			}
+		});
 
         
     </script>
